@@ -1,15 +1,19 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { faBell, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 const Header = () => {
   return (
-    <div className="ml-48 flex items-center p-5">
-      <div className="relative flex w-1/2 justify-center rounded-lg items-center border-2">
+    <div className="ml-48 flex p-5 items-center">
+      <div className="ml-40 relative flex w-1/2 justify-center rounded-lg  border-2">
         <FontAwesomeIcon
           icon={faMagnifyingGlass}
-          className="absolute rounded-lg p-3 left-0 items-center"
+          className="absolute rounded-lg p-3 left-0 "
         />
-        <input type="text" placeholder="Search" className="my-2 mx-6 " />
+        <input
+          type="text"
+          placeholder="Search customer details"
+          className="my-2 mx-10 w-full border-none fo"
+        />
       </div>
     </div>
   );

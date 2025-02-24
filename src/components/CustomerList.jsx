@@ -30,9 +30,19 @@ const CustomerList = () => {
 
   return (
     <div className="container mx-auto px-4 py-6">
-      <h2 className="text-2xl font-semibold mb-4">Customer List</h2>
+      <div className="flex items-center justify-between">
+        <div className="py-3">
+          <h2 className="text-blue-700 text-xl font-semibold">Customers</h2>
+          <p>Create, edit and manage your customers.</p>
+        </div>
+        <button
+          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
+          onClick={() => setShowModal(true)}
+        >
+          Add Customer
+        </button>
+      </div>
 
-      {/* Search and Add Customer Section */}
       <div className="flex items-center gap-x-2 mb-4">
         <input
           type="text"
@@ -41,11 +51,8 @@ const CustomerList = () => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-          onClick={() => setShowModal(true)}
-        >
-          Add Customer
+        <button className="bg-gray-200  px-4 py-2 rounded-lg hover:bg-gray-300 transition">
+          Filter
         </button>
       </div>
 

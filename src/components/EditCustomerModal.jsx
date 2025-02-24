@@ -21,7 +21,7 @@ const EditCustomerModal = ({ show, onClose, refresh, customer }) => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    console.log("Customer data received:", customer); // Debugging line
+    console.log("Customer data received:", customer);
 
     if (customer) {
       setFormData({
@@ -44,7 +44,7 @@ const EditCustomerModal = ({ show, onClose, refresh, customer }) => {
     setErrors([]);
 
     const formattedData = {
-      firstname: formData.first_name, // Convert to expected field
+      firstname: formData.first_name,
       lastname: formData.last_name,
       email: formData.email,
       telephone: formData.telephone,
