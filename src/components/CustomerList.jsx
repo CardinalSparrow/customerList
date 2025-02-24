@@ -43,17 +43,25 @@ const CustomerList = () => {
         </button>
       </div>
 
-      <div className="flex items-center gap-x-2 mb-4">
+      <div className="flex items-center gap-x-2 mb-4 justify-between">
         <input
           type="text"
           className="border border-gray-300 rounded-md px-3 py-2  focus:outline-none focus:ring-2 focus:ring-blue-400"
-          placeholder="Search customers..."
+          placeholder="Search customers"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-        <button className="bg-gray-200  px-4 py-2 rounded-lg hover:bg-gray-300 transition">
-          Filter
-        </button>
+        <div className="flex gap-3">
+          <button className="bg-white border  px-4 py-2 rounded-md hover:bg-gray-100 transition">
+            Filter
+          </button>
+          <button className="bg-white border px-4 py-2 rounded-md hover:bg-gray-100 transition">
+            Edit columns
+          </button>
+          <button className="bg-white border px-4 py-2 rounded-md hover:bg-gray-100 transition">
+            Export .csv
+          </button>
+        </div>
       </div>
 
       <CustomerTable customers={customers} reload={loadCustomers} />
