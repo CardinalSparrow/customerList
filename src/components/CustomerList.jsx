@@ -13,7 +13,7 @@ const CustomerList = () => {
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
       loadCustomers();
-    }, 500); // Debouncing API calls for efficiency
+    }, 500);
 
     return () => clearTimeout(delayDebounce);
   }, [searchText, page, pageSize]);
@@ -49,7 +49,6 @@ const CustomerList = () => {
         </button>
       </div>
 
-      {/* Customer Table with Reload Functionality */}
       <CustomerTable customers={customers} reload={loadCustomers} />
 
       {/* Create Customer Modal */}

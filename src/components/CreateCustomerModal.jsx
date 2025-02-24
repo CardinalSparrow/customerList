@@ -29,8 +29,8 @@ const CreateCustomerModal = ({ show, onClose, reload }) => {
     setErrors([]);
 
     const formattedData = {
-      firstname: customer.first_name, // Convert to match API
-      lastname: customer.last_name, // Convert to match API
+      firstname: customer.first_name,
+      lastname: customer.last_name,
       email: customer.email,
       telephone: customer.telephone,
       bvn: customer.bvn,
