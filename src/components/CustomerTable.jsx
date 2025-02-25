@@ -36,26 +36,26 @@ const CustomerTable = ({ customers, reload }) => {
         <table className="w-full border border-gray-200 rounded-lg">
           <thead>
             <tr className="bg-gray-100 text-gray-700">
-              <th className="px-4 py-2 border">Name</th>
-              <th className="px-4 py-2 border">Email</th>
-              <th className="px-4 py-2 border">Phone number</th>
-              <th className="px-4 py-2 border">Status</th>
-              <th className="px-4 py-2 border">Joined at</th>
-              <th className="px-4 py-2 border">Actions</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Phone number</th>
+              <th className="px-4 py-2">Status</th>
+              <th className="px-4 py-2">Joined at</th>
+              <th className="px-4 py-2">Actions</th>
             </tr>
           </thead>
           <tbody>
             {customers.length > 0 ? (
               customers.map((customer) => (
                 <tr key={customer.id} className="border-b text-gray-800">
-                  <td className="px-4 py-2 border">
+                  <td className="px-4 py-5 ">
                     {customer.first_name} {customer.last_name}
                   </td>
-                  <td className="px-4 py-2 border">{customer.email}</td>
-                  <td className="px-4 py-2 border">{customer.telephone}</td>
-                  <td className="px-4 py-2 border">{customer.status}</td>
-                  <td className="px-4 py-2 border">{customer.created_at}</td>
-                  <td className="px-4 py-2 border flex space-x-2">
+                  <td className="px-4 py-5">{customer.email}</td>
+                  <td className="px-4 py-5">{customer.telephone}</td>
+                  <td className="px-4 py-5">{customer.status}</td>
+                  <td className="px-4 py-5">{customer.created_at}</td>
+                  <td className="px-4 py-5 flex items-center space-x-2">
                     <button
                       className="bg-yellow-500 text-white px-3 py-1 rounded text-sm hover:bg-yellow-600 transition"
                       onClick={() => handleEdit(customer)}

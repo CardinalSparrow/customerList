@@ -7,7 +7,7 @@ const TOKEN =
 const axiosInstance = axios.create({
   baseURL: BASE_URL,
   headers: {
-    Authorization: `Bearer ${TOKEN}`, // Attach Bearer Token
+    Authorization: `Bearer ${TOKEN}`,
     "Content-Type": "application/json",
   },
 });
@@ -16,7 +16,7 @@ const axiosInstance = axios.create({
 export const fetchCustomers = async (
   search_text = "",
   page = 1,
-  page_size = 5
+  page_size = 10
 ) => {
   try {
     const response = await axiosInstance.get("/customers", {
@@ -26,6 +26,42 @@ export const fetchCustomers = async (
     return response.data.data;
   } catch (error) {
     console.error("Error fetching customers:", error.response?.data || error);
+    throw error;
+  }
+};
+
+// fetch all customers
+export const fetchAllCustomers = async () => {
+  try {
+    let allCustomers = [];
+    let page = 1;
+    let totalCustomers = 0;
+    let pageSize = 50;
+
+    do {
+      const response = await axiosInstance.get("/customers", {
+        params: { page, page_size: pageSize },
+      });
+      console.log(response.data);
+
+      const { data, total } = response.data.data;
+
+      allCustomers = [...allCustomers, ...data];
+      totalCustomers = total || allCustomers.length;
+      console.log(total);
+      console.log(allCustomers.length);
+      console.log(data);
+
+      page++;
+    } while (allCustomers.length < totalCustomers);
+
+    console.log(allCustomers);
+    return allCustomers;
+  } catch (error) {
+    console.error(
+      "Error fetching all customers:",
+      error.response?.data || error
+    );
     throw error;
   }
 };
