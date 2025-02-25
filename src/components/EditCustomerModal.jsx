@@ -60,12 +60,12 @@ const EditCustomerModal = ({ show, onClose, refresh, customer }) => {
       await editCustomer(customer.id, formattedData);
       refresh();
       onClose();
-    } catch (err) {
-      console.error("Edit Error:", err);
+    } catch (error) {
+      console.error("Edit Error:", error);
       setErrors(
-        err.response?.data?.errors
-          ? Object.values(err.response.data.errors).flat()
-          : [err.message || "An unexpected error occurred. Please try again."]
+        error.response?.data?.errors
+          ? Object.values(error.response.data.errors).flat()
+          : [error.message || "An unexpected error occurred. Please try again."]
       );
     }
   };

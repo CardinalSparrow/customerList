@@ -22,7 +22,6 @@ export const fetchCustomers = async (
     const response = await axiosInstance.get("/customers", {
       params: { search_text, page, page_size },
     });
-    console.log(response.data.data);
     return response.data.data;
   } catch (error) {
     console.error("Error fetching customers:", error.response?.data || error);
@@ -42,20 +41,15 @@ export const fetchAllCustomers = async () => {
       const response = await axiosInstance.get("/customers", {
         params: { page, page_size: pageSize },
       });
-      console.log(response.data);
 
       const { data, total } = response.data.data;
 
       allCustomers = [...allCustomers, ...data];
       totalCustomers = total || allCustomers.length;
-      console.log(total);
-      console.log(allCustomers.length);
-      console.log(data);
 
       page++;
     } while (allCustomers.length < totalCustomers);
 
-    console.log(allCustomers);
     return allCustomers;
   } catch (error) {
     console.error(
@@ -95,7 +89,6 @@ export const editCustomer = async (id, customerData) => {
 export const deleteCustomer = async (id) => {
   try {
     await axiosInstance.delete(`/customers/${id}`);
-    console.log(`Customer with ID ${id} deleted.`);
   } catch (error) {
     console.error("Error deleting customer:", error.response?.data || error);
     throw error;
