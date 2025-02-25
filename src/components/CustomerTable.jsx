@@ -6,9 +6,8 @@ const CustomerTable = ({ customers, reload }) => {
   const [selectedCustomer, setSelectedCustomer] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [deletingId, setDeletingId] = useState(null);
-
+  const [error, setError] = useState("");
   const handleEdit = (customer) => {
-    console.log("Editing customer:", customer);
     setSelectedCustomer(customer);
     setShowEditModal(true);
   };
@@ -23,8 +22,10 @@ const CustomerTable = ({ customers, reload }) => {
       await deleteCustomer(id);
       reload();
     } catch (error) {
-      console.error("Error deleting customer:", error);
-      alert("Failed to delete customer. Please try again.");
+      setError("Failed to delete customer.", error);
+      setTimeout(() => {
+        setError("");
+      }, 5000);
     } finally {
       setDeletingId(null);
     }
@@ -88,6 +89,7 @@ const CustomerTable = ({ customers, reload }) => {
             )}
           </tbody>
         </table>
+        {error && <p className="text-red-600">{error}</p>}
       </div>
 
       {/* Show Edit Modal */}

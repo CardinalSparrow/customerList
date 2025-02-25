@@ -29,7 +29,7 @@ const CustomerList = () => {
       const data = await fetchCustomers(searchText, page, pageSize);
       setCustomers(data.data);
     } catch (error) {
-      console.error("Error fetching customers:", error);
+      setError(error.message);
       setCustomers([]);
     }
   };
@@ -37,10 +37,9 @@ const CustomerList = () => {
   const loadAllCustomers = async () => {
     try {
       const data = await fetchAllCustomers();
-      console.log("Fetched allCustomers:", data);
       setAllCustomers(data);
     } catch (error) {
-      console.error("Error fetching all customers:", error);
+      setError(error.message);
       setAllCustomers([]);
     }
   };
@@ -48,13 +47,13 @@ const CustomerList = () => {
   // Count customers by status
   const totalCustomers = allCustomers.length;
   const activeCustomers = allCustomers.filter(
-    (c) => c.status === "Active"
+    (c) => c.status.toLowerCase() === "active"
   ).length;
   const overdueCustomers = allCustomers.filter(
-    (c) => c.status === "Overdue"
+    (c) => c.status.toLowerCase() === "overdue"
   ).length;
   const dormantCustomers = allCustomers.filter(
-    (c) => c.status === "DORMANT" || "dormant"
+    (c) => c.status.toLowerCase() === "dormant"
   ).length;
 
   return (
@@ -100,7 +99,7 @@ const CustomerList = () => {
         </div>
       </div>
 
-      {/* Search and actions */}
+      {/* Search and filter */}
       <div className="flex items-center gap-x-2 mb-4 justify-between">
         <input
           type="text"
@@ -175,6 +174,7 @@ const CustomerList = () => {
           </button>
         </div>
       </div>
+      {error && <p className="text-red-600">{error}</p>}
     </div>
   );
 };

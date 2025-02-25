@@ -17,7 +17,6 @@ const CreateCustomerModal = ({ show, onClose, reload }) => {
     accountnumber: "",
   });
 
-  // const [formData, setFormData] = useState(customer);
   const [errors, setErrors] = useState([]);
 
   const handleChange = (e) => {

@@ -21,8 +21,6 @@ const EditCustomerModal = ({ show, onClose, refresh, customer }) => {
   const [errors, setErrors] = useState([]);
 
   useEffect(() => {
-    console.log("Customer data received:", customer);
-
     if (customer) {
       setFormData({
         ...initialFormData,

@@ -2,8 +2,6 @@ import React from "react";
 import Logo from "../assets/react.svg";
 
 import { NavLink } from "react-router-dom";
-// import { IconDefinition } from "@fortawesome/free-solid-svg-icons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Sidebar = () => {
   return (
